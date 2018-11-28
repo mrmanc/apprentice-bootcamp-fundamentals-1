@@ -1,9 +1,23 @@
 package checkout;
 
+import java.util.Arrays;
+import java.util.List;
+
 class Checkout {
     private int total;
     private Receipt receipt = new Receipt();
     private final Basket basket = new Basket();
+    private final List<Discount> discounts;
+
+    Checkout() {
+        final List<Discount> discounts = Arrays.asList(new Discount[]{
+                new Discount("A", 20, 3),
+                new Discount("B", 15, 2),
+                new Discount("C", 10, 4),
+                new Discount("D", 15, 5)
+        });
+        this.discounts = discounts;
+    }
 
     void scan(String sku) {
         final Product product = findProduct(sku);
@@ -35,8 +49,7 @@ class Checkout {
             product = new Product("C", 20);
         } else if ("D".equals(sku)) {
             product = new Product("D", 15);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Product sku not valid");
         }
         return product;
@@ -47,12 +60,11 @@ class Checkout {
     }
 
     private int discounts() {
-        int discounts = 0;
-        discounts += new Discount("A", 20, 3).discount(basket);
-        discounts += new Discount("B", 15, 2).discount(basket);
-        discounts += new Discount("C", 10, 4).discount(basket);
-        discounts += new Discount("D", 15, 5).discount(basket);
-        return discounts;
+        int discountAmount = 0;
+        for (Discount discount : discounts) {
+            discountAmount += discount.discount(basket);
+        }
+        return discountAmount;
     }
 
     public String receipt() {

@@ -19,4 +19,12 @@ class Basket {
         }
         return result;
     }
+
+    int price() {
+        int result = 0;
+        for (Product product : this.basket) {
+            result += product.price();
+        }
+        return result;
+    }
 }

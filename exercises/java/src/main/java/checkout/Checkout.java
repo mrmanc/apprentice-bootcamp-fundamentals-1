@@ -3,8 +3,7 @@ package checkout;
 import java.util.List;
 
 class Checkout {
-    private int total;
-    private Receipt receipt = new Receipt();
+    private final Receipt receipt = new Receipt();
     private final Basket basket = new Basket();
     private final List<Discount> discounts;
     private final Catalogue catalogue;
@@ -19,10 +18,7 @@ class Checkout {
     }
 
     void scan(String sku) {
-        final Product product = catalogue.findProduct(sku);
-        basket.add(product);
-        total += product.price();
-
+        basket.add(catalogue.findProduct(sku));
         addProductToReceipt(sku);
     }
 
@@ -39,7 +35,7 @@ class Checkout {
     }
 
     int total() {
-        return total - discounts();
+        return basket.price() - discounts();
     }
 
     private int discounts() {

@@ -12,17 +12,17 @@ class Checkout {
         final Product product;
         if ("A".equals(sku)) {
             product = new Product(50);
-            total += product.price();
         } else if ("B".equals(sku)) {
             product = new Product(30);
-            total += product.price();
         } else if ("C".equals(sku)) {
             product = new Product(20);
-            total += product.price();
         } else if ("D".equals(sku)) {
             product = new Product(15);
-            total += product.price();
         }
+        else {
+            throw new IllegalArgumentException("Product sku not valid");
+        }
+        total += product.price();
         if ("A".equals(sku)) {
             receipt.scannedA();
         } else if ("B".equals(sku)) {

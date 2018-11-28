@@ -7,18 +7,11 @@ class Checkout {
     private int total;
     private Receipt receipt = new Receipt();
     private Set<Product> basket = new HashSet<>();
-    private int discounts;
 
     void scan(String sku) {
         final Product product = findProduct(sku);
         basket.add(product);
         total += product.price();
-        
-        discounts = 0;
-        discounts += 20 * (numberOf("A") / 3);
-        discounts += 15 * (numberOf("B") / 2);
-        discounts += 10 * (numberOf("C") / 4);
-        discounts += 15 * (numberOf("D") / 5);
         
         addProductToReceipt(sku);
     }
@@ -63,7 +56,16 @@ class Checkout {
     }
 
     int total() {
-        return total - discounts;
+        return total - discounts();
+    }
+
+    private int discounts() {
+        int discounts = 0;
+        discounts += 20 * (numberOf("A") / 3);
+        discounts += 15 * (numberOf("B") / 2);
+        discounts += 10 * (numberOf("C") / 4);
+        discounts += 15 * (numberOf("D") / 5);
+        return discounts;
     }
 
     public String receipt() {

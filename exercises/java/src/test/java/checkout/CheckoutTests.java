@@ -87,6 +87,18 @@ public class CheckoutTests {
     }
 
     @Test
+    public void fiveD() {
+        Checkout checkout = new Checkout();
+
+        checkout.scan("D");
+        checkout.scan("D");
+        checkout.scan("D");
+        checkout.scan("D");
+        checkout.scan("D");
+        assertThat(checkout.total()).isEqualTo(60);
+    }
+
+    @Test
     public void simple() {
         Checkout checkout = new Checkout();
         

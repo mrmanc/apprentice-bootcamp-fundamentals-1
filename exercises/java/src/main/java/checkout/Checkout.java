@@ -13,37 +13,21 @@ class Checkout {
         basket.add(product);
         total += product.price();
         
-        int numberOfB = 0;
-        int numberOfC = 0;
-        int numberOfD = 0;
-        int numberOfA = numberOf("A");
-        for (Product productInBasket : basket) {
-            if ("B".equals(productInBasket.sku())) {
-                numberOfB++;
-            }
-            if ("C".equals(productInBasket.sku())) {
-                numberOfC++;
-            }
-            if ("D".equals(productInBasket.sku())) {
-                numberOfD++;
-            }
-        }
-        
         int discounts = 0;
         if ("A".equals(sku)) {
-            if (numberOfA % 3 == 0) {
+            if (numberOf("A") % 3 == 0) {
                 discounts += 20;
             }
         } else if ("B".equals(sku)) {
-            if (numberOfB % 2 == 0) {
+            if (numberOf("B") % 2 == 0) {
                 discounts += 15;
             }
         } else if ("C".equals(sku)) {
-            if (numberOfC % 4 == 0) {
+            if (numberOf("C") % 4 == 0) {
                 discounts += 10;
             }
         } else if ("D".equals(sku)) {
-            if (numberOfD % 5 == 0) {
+            if (numberOf("D") % 5 == 0) {
                 discounts += 15;
             }
         }

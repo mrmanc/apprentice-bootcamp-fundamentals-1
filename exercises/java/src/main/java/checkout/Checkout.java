@@ -14,25 +14,12 @@ class Checkout {
         basket.add(product);
         total += product.price();
         
-        int discounts = 0;
-        if ("A".equals(sku)) {
-            if (numberOf("A") % 3 == 0) {
-                discounts += 20;
-            }
-        } else if ("B".equals(sku)) {
-            if (numberOf("B") % 2 == 0) {
-                discounts += 15;
-            }
-        } else if ("C".equals(sku)) {
-            if (numberOf("C") % 4 == 0) {
-                discounts += 10;
-            }
-        } else if ("D".equals(sku)) {
-            if (numberOf("D") % 5 == 0) {
-                discounts += 15;
-            }
-        }
-        this.discounts += discounts;
+        discounts = 0;
+        discounts += 20 * numberOf("A") / 3;
+        discounts += 15 * numberOf("B") / 2;
+        discounts += 10 * numberOf("C") / 4;
+        discounts += 15 * numberOf("D") / 5;
+        
         addProductToReceipt(sku);
     }
 

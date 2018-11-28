@@ -9,14 +9,19 @@ class Checkout {
     private Receipt receipt = new Receipt();
 
     void scan(String sku) {
+        final Product product;
         if ("A".equals(sku)) {
-            total += new Product(50).price();
+            product = new Product(50);
+            total += product.price();
         } else if ("B".equals(sku)) {
-            total += new Product(30).price();
+            product = new Product(30);
+            total += product.price();
         } else if ("C".equals(sku)) {
-            total += new Product(20).price();
+            product = new Product(20);
+            total += product.price();
         } else if ("D".equals(sku)) {
-            total += new Product(15).price();
+            product = new Product(15);
+            total += product.price();
         }
         if ("A".equals(sku)) {
             receipt.scannedA();

@@ -76,6 +76,17 @@ public class CheckoutTests {
     }
 
     @Test
+    public void fourC() {
+        Checkout checkout = new Checkout();
+
+        checkout.scan("C");
+        checkout.scan("C");
+        checkout.scan("C");
+        checkout.scan("C");
+        assertThat(checkout.total()).isEqualTo(70);
+    }
+
+    @Test
     public void simple() {
         Checkout checkout = new Checkout();
         

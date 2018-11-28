@@ -11,15 +11,20 @@ class Checkout {
     void scan(String sku) {
         if ("A".equals(sku)) {
             total += 50;
-            receipt.scannedA();
         } else if ("B".equals(sku)) {
             total += 30;
-            receipt.scannedB();
         } else if ("C".equals(sku)) {
             total += 20;
-            receipt.scannedC();
         } else if ("D".equals(sku)) {
             total += 15;
+        }
+        if ("A".equals(sku)) {
+            receipt.scannedA();
+        } else if ("B".equals(sku)) {
+            receipt.scannedB();
+        } else if ("C".equals(sku)) {
+            receipt.scannedC();
+        } else if ("D".equals(sku)) {
             receipt.scannedD();
         }
         if ("A".equals(sku)) {

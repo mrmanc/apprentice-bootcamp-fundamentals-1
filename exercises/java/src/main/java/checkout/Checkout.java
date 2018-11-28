@@ -13,14 +13,16 @@ class Checkout {
         basket.add(product);
         total += product.price();
         
-        int numberOfA = 0;
         int numberOfB = 0;
         int numberOfC = 0;
         int numberOfD = 0;
+        int numberOfA = 0;
         for (Product productInBasket : basket) {
             if ("A".equals(productInBasket.sku())) {
                 numberOfA++;
             }
+        }
+        for (Product productInBasket : basket) {
             if ("B".equals(productInBasket.sku())) {
                 numberOfB++;
             }

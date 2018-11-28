@@ -16,12 +16,7 @@ class Checkout {
         int numberOfB = 0;
         int numberOfC = 0;
         int numberOfD = 0;
-        int numberOfA = 0;
-        for (Product productInBasket : basket) {
-            if ("A".equals(productInBasket.sku())) {
-                numberOfA++;
-            }
-        }
+        int numberOfA = numberOf();
         for (Product productInBasket : basket) {
             if ("B".equals(productInBasket.sku())) {
                 numberOfB++;
@@ -54,6 +49,16 @@ class Checkout {
         }
         total -= discounts;
         addProductToReceipt(sku);
+    }
+
+    private int numberOf() {
+        int numberOfA = 0;
+        for (Product productInBasket : basket) {
+            if ("A".equals(productInBasket.sku())) {
+                numberOfA++;
+            }
+        }
+        return numberOfA;
     }
 
     private void addProductToReceipt(String sku) {

@@ -10,7 +10,7 @@ class Checkout {
 
     void scan(String sku) {
         if ("A".equals(sku)) {
-            total += 50;
+            total += new Product(50).price();
         } else if ("B".equals(sku)) {
             total += 30;
         } else if ("C".equals(sku)) {

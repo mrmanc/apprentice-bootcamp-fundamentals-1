@@ -7,6 +7,7 @@ class Checkout {
     private int total;
     private Receipt receipt = new Receipt();
     private Set<Product> basket = new HashSet<>();
+    private int discounts;
 
     void scan(String sku) {
         final Product product = findProduct(sku);
@@ -31,7 +32,7 @@ class Checkout {
                 discounts += 15;
             }
         }
-        total -= discounts;
+        this.discounts += discounts;
         addProductToReceipt(sku);
     }
 
@@ -75,7 +76,7 @@ class Checkout {
     }
 
     int total() {
-        return total;
+        return total - discounts;
     }
 
     public String receipt() {

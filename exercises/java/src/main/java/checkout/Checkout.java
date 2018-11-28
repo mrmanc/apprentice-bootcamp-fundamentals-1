@@ -9,19 +9,7 @@ class Checkout {
     private Receipt receipt = new Receipt();
 
     void scan(String sku) {
-        final Product product;
-        if ("A".equals(sku)) {
-            product = new Product(50);
-        } else if ("B".equals(sku)) {
-            product = new Product(30);
-        } else if ("C".equals(sku)) {
-            product = new Product(20);
-        } else if ("D".equals(sku)) {
-            product = new Product(15);
-        }
-        else {
-            throw new IllegalArgumentException("Product sku not valid");
-        }
+        final Product product = findProduct(sku);
         total += product.price();
         if ("A".equals(sku)) {
             receipt.scannedA();
@@ -53,6 +41,23 @@ class Checkout {
                 total -= 15;
             }
         }
+    }
+
+    private Product findProduct(String sku) {
+        final Product product;
+        if ("A".equals(sku)) {
+            product = new Product(50);
+        } else if ("B".equals(sku)) {
+            product = new Product(30);
+        } else if ("C".equals(sku)) {
+            product = new Product(20);
+        } else if ("D".equals(sku)) {
+            product = new Product(15);
+        }
+        else {
+            throw new IllegalArgumentException("Product sku not valid");
+        }
+        return product;
     }
 
     int total() {

@@ -12,11 +12,11 @@ class Checkout {
         if ("A".equals(sku)) {
             total += new Product(50).price();
         } else if ("B".equals(sku)) {
-            total += 30;
+            total += new Product(30).price();
         } else if ("C".equals(sku)) {
-            total += 20;
+            total += new Product(20).price();
         } else if ("D".equals(sku)) {
-            total += 15;
+            total += new Product(15).price();
         }
         if ("A".equals(sku)) {
             receipt.scannedA();

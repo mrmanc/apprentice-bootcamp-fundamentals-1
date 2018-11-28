@@ -1,12 +1,9 @@
 package checkout;
 
-import java.util.HashSet;
-import java.util.Set;
-
 class Checkout {
     private int total;
     private Receipt receipt = new Receipt();
-    private Set<Product> basket = new HashSet<>();
+    private final Basket basket = new Basket();
 
     void scan(String sku) {
         final Product product = findProduct(sku);
@@ -14,16 +11,6 @@ class Checkout {
         total += product.price();
         
         addProductToReceipt(sku);
-    }
-
-    private int numberOf(String sku) {
-        int result = 0;
-        for (Product productInBasket : basket) {
-            if (sku.equals(productInBasket.sku())) {
-                result++;
-            }
-        }
-        return result;
     }
 
     private void addProductToReceipt(String sku) {
@@ -61,10 +48,10 @@ class Checkout {
 
     private int discounts() {
         int discounts = 0;
-        discounts += 20 * (numberOf("A") / 3);
-        discounts += 15 * (numberOf("B") / 2);
-        discounts += 10 * (numberOf("C") / 4);
-        discounts += 15 * (numberOf("D") / 5);
+        discounts += 20 * (basket.numberOf("A") / 3);
+        discounts += 15 * (basket.numberOf("B") / 2);
+        discounts += 10 * (basket.numberOf("C") / 4);
+        discounts += 15 * (basket.numberOf("D") / 5);
         return discounts;
     }
 

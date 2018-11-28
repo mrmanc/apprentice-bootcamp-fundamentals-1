@@ -48,11 +48,15 @@ class Checkout {
 
     private int discounts() {
         int discounts = 0;
-        discounts += 20 * (basket.numberOf("A") / 3);
-        discounts += 15 * (basket.numberOf("B") / 2);
-        discounts += 10 * (basket.numberOf("C") / 4);
-        discounts += 15 * (basket.numberOf("D") / 5);
+        discounts += discount("A", 20, 3, basket);
+        discounts += discount("B", 15, 2, basket);
+        discounts += discount("C", 10, 4, basket);
+        discounts += discount("D", 15, 5, basket);
         return discounts;
+    }
+
+    private int discount(String sku, int discountAmount, int quantity, Basket basket) {
+        return discountAmount * (basket.numberOf(sku) / quantity);
     }
 
     public String receipt() {

@@ -270,7 +270,7 @@ Note: Kata requires code to handle running total and offers
 * Make some changes:
   -[+] Change it so that you can have 4 ‘C’ for 70
   -[+] Change it so that you can have 5 ‘D’ for 60
-  -[+] Change it so that you can have 4 ‘A’ for 180
+  -[+] Change it so that you can have 4 ‘A’ for 190
 
 Note: Do changes one by one as you don't want them to know that ‘A’ will change
 

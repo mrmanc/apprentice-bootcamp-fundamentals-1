@@ -1,6 +1,5 @@
 package checkout;
 
-import java.util.Arrays;
 import java.util.List;
 
 class Checkout {
@@ -9,13 +8,7 @@ class Checkout {
     private final Basket basket = new Basket();
     private final List<Discount> discounts;
 
-    Checkout() {
-        final List<Discount> discounts = Arrays.asList(new Discount[]{
-                new Discount("A", 20, 3),
-                new Discount("B", 15, 2),
-                new Discount("C", 10, 4),
-                new Discount("D", 15, 5)
-        });
+    Checkout(List<Discount> discounts) {
         this.discounts = discounts;
     }
 

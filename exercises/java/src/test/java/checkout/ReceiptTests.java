@@ -2,13 +2,20 @@ package checkout;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ReceiptTests {
 
     @Test
     public void singleItem() {
-        Checkout checkout = new Checkout();
+        Checkout checkout = new Checkout(Arrays.asList(new Discount[]{
+                new Discount("A", 20, 3),
+                new Discount("B", 15, 2),
+                new Discount("C", 10, 4),
+                new Discount("D", 15, 5)
+        }));
         checkout.scan("A");
         assertThat(checkout.receipt()).containsSequence(
                 "A: 50\n",
@@ -17,7 +24,12 @@ public class ReceiptTests {
     
     @Test
     public void oneOfEach() {
-        Checkout checkout = new Checkout();
+        Checkout checkout = new Checkout(Arrays.asList(new Discount[]{
+                new Discount("A", 20, 3),
+                new Discount("B", 15, 2),
+                new Discount("C", 10, 4),
+                new Discount("D", 15, 5)
+        }));
         checkout.scan("A");
         checkout.scan("B");
         checkout.scan("C");
@@ -32,7 +44,12 @@ public class ReceiptTests {
 
     @Test
     public void offers() {
-        Checkout checkout = new Checkout();
+        Checkout checkout = new Checkout(Arrays.asList(new Discount[]{
+                new Discount("A", 20, 3),
+                new Discount("B", 15, 2),
+                new Discount("C", 10, 4),
+                new Discount("D", 15, 5)
+        }));
         checkout.scan("A");
         checkout.scan("A");
         checkout.scan("B");

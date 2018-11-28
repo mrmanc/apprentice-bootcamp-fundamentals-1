@@ -50,6 +50,19 @@ public class CheckoutTests {
         assertThat(checkout.total()).isEqualTo(130);
     }
 
+    @Test
+    public void fourA() {
+        Checkout checkout = new Checkout(Arrays.asList(new Discount[]{
+                new Discount("A", 10, 4)
+        }));
+
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        assertThat(checkout.total()).isEqualTo(190);
+    }
+
 
     @Test
     public void sixA() {

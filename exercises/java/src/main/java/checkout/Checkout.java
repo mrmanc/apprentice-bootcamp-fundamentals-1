@@ -7,16 +7,22 @@ class Checkout {
     private Receipt receipt = new Receipt();
     private final Basket basket = new Basket();
     private final List<Discount> discounts;
+    private final Catalogue catalogue;
 
     Checkout(List<Discount> discounts) {
         this.discounts = discounts;
+        this.catalogue = new Catalogue(
+                new Product("A", 50),
+                new Product("B", 30),
+                new Product("C", 20),
+                new Product("D", 15));
     }
 
     void scan(String sku) {
-        final Product product = findProduct(sku);
+        final Product product = catalogue.findProduct(sku);
         basket.add(product);
         total += product.price();
-        
+
         addProductToReceipt(sku);
     }
 
@@ -30,22 +36,6 @@ class Checkout {
         } else if ("D".equals(sku)) {
             receipt.scannedD();
         }
-    }
-
-    private Product findProduct(String sku) {
-        final Product product;
-        if ("A".equals(sku)) {
-            product = new Product("A", 50);
-        } else if ("B".equals(sku)) {
-            product = new Product("B", 30);
-        } else if ("C".equals(sku)) {
-            product = new Product("C", 20);
-        } else if ("D".equals(sku)) {
-            product = new Product("D", 15);
-        } else {
-            throw new IllegalArgumentException("Product sku not valid");
-        }
-        return product;
     }
 
     int total() {

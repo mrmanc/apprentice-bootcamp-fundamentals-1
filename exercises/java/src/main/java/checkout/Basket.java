@@ -1,10 +1,10 @@
 package checkout;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 class Basket {
-    private final Set<Product> basket = new HashSet<>();
+    private final List<Product> basket = new ArrayList<>();
 
     void add(Product product) {
         this.basket.add(product);

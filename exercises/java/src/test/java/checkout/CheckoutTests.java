@@ -7,6 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CheckoutTests {
 
     @Test
+    public void nothing() {
+        Checkout checkout = new Checkout();
+
+        assertThat(checkout.total()).isEqualTo(0);
+    }
+
+    @Test
     public void oneA() {
         Checkout checkout = new Checkout();
 

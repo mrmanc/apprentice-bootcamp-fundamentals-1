@@ -1,14 +1,12 @@
 package checkout;
 
-import java.util.List;
-
 class Checkout {
     private final Receipt receipt = new Receipt();
     private final Basket basket = new Basket();
-    private final List<Discount> discounts;
+    private final Discount[] discounts;
     private final Catalogue catalogue;
 
-    Checkout(List<Discount> discounts) {
+    Checkout(Discount... discounts) {
         this.discounts = discounts;
         this.catalogue = new Catalogue(
                 new Product("A", 50),
@@ -46,7 +44,7 @@ class Checkout {
         return discountAmount;
     }
 
-    public String receipt() {
+    String receipt() {
         return receipt.text();
     }
 }
